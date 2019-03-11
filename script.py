@@ -10,6 +10,33 @@ persian_limes_per_month = [67.0, 51.0, 57.0, 54.0, 83.0, 90.0, 52.0, 63.0, 51.0,
 blood_limes_per_month = [75.0, 75.0, 76.0, 71.0, 74.0, 77.0, 69.0, 80.0, 63.0, 69.0, 73.0, 82.0]
 
 
-# create your figure here
+# create left subplot
+plt.figure(figsize=[12, 8])
+ax1 = plt.subplot(1, 2, 1)
+x_values = range(len(months))
+plt.plot(x_values, visits_per_month, marker='o')
+plt.xlabel('Month')
+plt.ylabel('Visits')
+plt.title('Monthly visits')
+ax1.set_xticks(x_values)
+ax1.set_xticklabels(months)
+
+# create right subplot
+ax2 = plt.subplot(1, 2, 2)
+plt.plot(x_values, key_limes_per_month, color='green')
+plt.plot(x_values, persian_limes_per_month, color='olive')
+plt.plot(x_values, blood_limes_per_month, color='red')
+plt.legend(['Key lime', 'Persian lime', 'Blood lime'])
+plt.title('Monthly lime sales')
+plt.xlabel('Month')
+plt.ylabel('Lime sales')
+ax2.set_xticks(x_values)
+ax2.set_xticklabels(months)
+
+# adjust padding
+plt.subplots_adjust(wspace=0.25)
+
+# saving file
+plt.savefig('Lime_sales.png')
 
 plt.show()
